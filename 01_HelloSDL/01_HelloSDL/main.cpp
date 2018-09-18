@@ -68,6 +68,8 @@ int main( int argc, char* args[] )
 							255);	// and alpha of the new color (all 1 byte, i.e. in the range of [0,255]
 	SDL_RenderClear(ren); // clear the entire client area of the window associated with the renderer 'ren' with the current drawcolor
 
+	SDL_RenderPresent(ren);
+
 	SDL_Delay(2000);
 	// change color: SDL_SetRenderDrawColor
 
