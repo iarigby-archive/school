@@ -1,8 +1,8 @@
 #!/bin/bash
 
-printf "starting flex\n***\n"
+printf "\n\n| starting flex\n|*************\n| flex first.l\n"
 flex first.l
-printf "\n\nstarting g++\n***\n"
+printf "\n\n| starting g++\n|************\n| g++ lex.yy.cc\n"
 g++ lex.yy.cc
-printf "\n\nrunning\n***\n"
+printf "\n\n| running\n|*******\n| ./a.out\n"
 ./a.out
