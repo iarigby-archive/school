@@ -312,12 +312,17 @@ void yyfree (void *  );
 
 #define YY_AT_BOL() (YY_CURRENT_BUFFER_LVALUE->yy_at_bol)
 
+/* Begin user sect3 */
+#define YY_SKIP_YYWRAP
+
 typedef unsigned char YY_CHAR;
 
 #define yytext_ptr yytext
 #define YY_INTERACTIVE
 
 #include <FlexLexer.h>
+
+int yyFlexLexer::yywrap() { return 1; }
 
 /* Done after the current pattern has been matched and before the
  * corresponding action - sets up yytext.
@@ -408,7 +413,7 @@ static yyconst flex_int16_t yy_chk[5] =
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 #line 1 "first.l"
-#line 412 "lex.yy.cc"
+#line 417 "lex.yy.cc"
 
 #define INITIAL 0
 
@@ -541,7 +546,9 @@ YY_DECL
 
 	{
 #line 3 "first.l"
-#line 545 "lex.yy.cc"
+
+
+#line 552 "lex.yy.cc"
 
 	while ( 1 )		/* loops until end-of-file is reached */
 		{
@@ -600,10 +607,10 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 3 "first.l"
+#line 5 "first.l"
 ECHO;
 	YY_BREAK
-#line 607 "lex.yy.cc"
+#line 614 "lex.yy.cc"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1502,4 +1509,11 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 2 "first.l"
+#line 4 "first.l"
+
+
+
+int main()
+{
+	return 0;
+}
