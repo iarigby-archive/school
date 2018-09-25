@@ -343,10 +343,10 @@ struct yy_trans_info
 	flex_int32_t yy_verify;
 	flex_int32_t yy_nxt;
 	};
-static yyconst flex_int16_t yy_accept[14] =
+static yyconst flex_int16_t yy_accept[15] =
     {   0,
         0,    0,    3,    2,    2,    0,    0,    0,    0,    0,
-        0,    1,    0
+        0,    1,    1,    0
     } ;
 
 static yyconst flex_int32_t yy_ec[256] =
@@ -356,7 +356,7 @@ static yyconst flex_int32_t yy_ec[256] =
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    2,    1,    3,    4,    5,
-        1,    1,    5,    1,    1,    1,    1,    1,    1,    1,
+        5,    5,    5,    5,    5,    5,    5,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
@@ -386,32 +386,32 @@ static yyconst flex_int32_t yy_meta[6] =
         1,    2,    3,    4,    4
     } ;
 
-static yyconst flex_int16_t yy_base[22] =
+static yyconst flex_int16_t yy_base[24] =
     {   0,
-       11,   10,   13,   16,    0,    0,    0,    0,    0,    0,
-        0,   16,   16,    0,    9,    9,    7,    7,    5,    5,
-        2
+       14,   13,   16,   19,    0,    0,    0,    0,    0,    0,
+       12,   19,    0,   19,    0,   11,   11,    9,    9,    7,
+        7,    2,    4
     } ;
 
-static yyconst flex_int16_t yy_def[22] =
+static yyconst flex_int16_t yy_def[24] =
     {   0,
-       14,   14,   13,   13,   15,   16,   17,   18,   19,   20,
-       21,   13,    0,   13,   13,   13,   13,   13,   13,   13,
-       13
+       15,   15,   14,   14,   16,   17,   18,   19,   20,   21,
+       22,   14,   23,    0,   14,   14,   14,   14,   14,   14,
+       14,   14,   14
     } ;
 
-static yyconst flex_int16_t yy_nxt[22] =
+static yyconst flex_int16_t yy_nxt[25] =
     {   0,
-        4,    4,    4,    4,   12,   12,   11,   10,    9,    8,
-        7,    6,   13,    5,    5,    3,   13,   13,   13,   13,
-       13
+        4,    4,    4,    4,   13,   13,   12,   12,   11,   10,
+        9,    8,    7,    6,   12,   14,    5,    5,    3,   14,
+       14,   14,   14,   14
     } ;
 
-static yyconst flex_int16_t yy_chk[22] =
+static yyconst flex_int16_t yy_chk[25] =
     {   0,
-       14,   14,   14,   14,   21,   21,   20,   19,   18,   17,
-       16,   15,    3,    2,    1,   13,   13,   13,   13,   13,
-       13
+       15,   15,   15,   15,   22,   22,   23,   23,   21,   20,
+       19,   18,   17,   16,   11,    3,    2,    1,   14,   14,
+       14,   14,   14,   14
     } ;
 
 /* The intent behind this definition is that it'll catch
@@ -585,13 +585,13 @@ yy_match:
 			while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 				{
 				yy_current_state = (int) yy_def[yy_current_state];
-				if ( yy_current_state >= 14 )
+				if ( yy_current_state >= 15 )
 					yy_c = yy_meta[(unsigned int) yy_c];
 				}
 			yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
 			++yy_cp;
 			}
-		while ( yy_base[yy_current_state] != 16 );
+		while ( yy_base[yy_current_state] != 19 );
 
 yy_find_action:
 		yy_act = yy_accept[yy_current_state];
@@ -618,11 +618,11 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 YY_RULE_SETUP
 #line 6 "first.l"
-std::cout << "Found an IP address! :)" << std::endl; // 0-255 is taken as [0-2]|[5]|[5]
+std::cout << "Found an IP address: " << YYText() << std::endl; 
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 8 "first.l"
+#line 7 "first.l"
 ECHO;
 	YY_BREAK
 #line 629 "lex.yy.cc"
@@ -1007,7 +1007,7 @@ int yyFlexLexer::yy_get_next_buffer()
 		while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 			{
 			yy_current_state = (int) yy_def[yy_current_state];
-			if ( yy_current_state >= 14 )
+			if ( yy_current_state >= 15 )
 				yy_c = yy_meta[(unsigned int) yy_c];
 			}
 		yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
@@ -1035,11 +1035,11 @@ int yyFlexLexer::yy_get_next_buffer()
 	while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 		{
 		yy_current_state = (int) yy_def[yy_current_state];
-		if ( yy_current_state >= 14 )
+		if ( yy_current_state >= 15 )
 			yy_c = yy_meta[(unsigned int) yy_c];
 		}
 	yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
-	yy_is_jam = (yy_current_state == 13);
+	yy_is_jam = (yy_current_state == 14);
 
 		return yy_is_jam ? 0 : yy_current_state;
 }
@@ -1524,7 +1524,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 7 "first.l"
+#line 6 "first.l"
 
 
 

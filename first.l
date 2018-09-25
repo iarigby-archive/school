@@ -3,8 +3,7 @@
 %%
 
 
-10\.0\.0\.[0-255] std::cout << "Found an IP address! :)" << std::endl; // 0-255 is taken as [0-2]|[5]|[5]
-
+10\.0\.0\.([0-9]|[1-9][0-9]) std::cout << "Found an IP address: " << YYText() << std::endl; 
 %%
 
 int main()
