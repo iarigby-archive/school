@@ -4,14 +4,12 @@
 
 
 ab  std::cout << "a";
-[a-z][a-z]  std::cout << "b";
+[a-z][a-z]  std::cout << "b"; // priority goes from top to bottom
 
 
 %%
 
-
-// [a-z] expects an action
-// priority goes from top to bottom
+// output now:
 // abcde -> abe
 // abcdef -> abb
 
