@@ -61,9 +61,10 @@ int main( int argc, char* args[] )
 	Sint32 mouseX = 0, mouseY = 0;
 
 	bool redColor = true;
+	int width = 20;
 
 	while (!quit)
-	{
+	{	
 		while ( SDL_PollEvent(&ev) )
 		{
 			switch (ev.type)
@@ -72,8 +73,12 @@ int main( int argc, char* args[] )
 				quit = true;
 				break;
 			case SDL_KEYDOWN:
-				if ( ev.key.keysym.sym == SDLK_ESCAPE )
+				if (ev.key.keysym.sym == SDLK_ESCAPE)
 					quit = true;
+				else if (ev.key.keysym.sym == SDLK_p)
+					width += 5;
+				else if (ev.key.keysym.sym == SDLK_m && width >= 5)
+					width -= 5;
 				break;
 			case SDL_MOUSEMOTION:
 				mouseX = ev.motion.x;
@@ -102,10 +107,10 @@ int main( int argc, char* args[] )
 		SDL_SetRenderDrawColor(	ren, 255, 0, 0,	 255);	
 		// and a red rectangle
 		SDL_Rect cursor_rect;
-		cursor_rect.x = mouseX - 20/2;
-		cursor_rect.y = mouseY - 20/2;
-		cursor_rect.w = 20;
-		cursor_rect.h = 20;
+		cursor_rect.x = mouseX - width/2;
+		cursor_rect.y = mouseY - width/2;
+		cursor_rect.w = width;
+		cursor_rect.h = width;
 
 		if (redColor)
 			SDL_SetRenderDrawColor(ren, 255, 0, 0, 255);
