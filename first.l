@@ -3,9 +3,7 @@
 %%
 
 
-ab		std::cout << "a";
-[a-z][a-z]+	std::cout << "b"; // priority goes from top to bottom
-
+10\.0\.0\.[0-255] std::cout << "Found an IP address! :)" << std::endl; // 0-255 is taken as [0-2]|[5]|[5]
 
 %%
 
@@ -13,11 +11,7 @@ int main()
 {
 	yyFlexLexer lexer(&std::cin, &std::cout);
 	//create an instance of the lexer that uses std cin and out for io
-	lexer.yylex();
-	//call the function
-	// output now:
-	// it only ouputs a single b on 2+ letters (other than ab)
-	// in case of abc the second rule is matched (because of rule 2 from lecture)
-
+	lexer.yylex(); 
+	
 	return 0;
 }
