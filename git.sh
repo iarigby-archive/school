@@ -1,3 +1,9 @@
+#!/bin/bash
+
 git status
+printf "\n***\n"
 git add .
-git commit -m $1
+git status
+printf "\n***\ninsert commit message:"
+read commitmessage
+git commit -m $commitmessage
