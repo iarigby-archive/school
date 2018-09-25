@@ -89,7 +89,7 @@ int main( int argc, char* args[] )
 
 		// clear the screen with white
 		SDL_SetRenderDrawColor(ren, 255, 255, 255, 255);
-		SDL_RenderClear(ren);
+		//SDL_RenderClear(ren);
 
 		// draw a green line
 		SDL_SetRenderDrawColor(	ren, 0, 255, 0,	 255);	
