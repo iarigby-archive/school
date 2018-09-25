@@ -2,9 +2,18 @@
 
 %%
 
-[a-z]  std::cout << "a";
+
+ab  std::cout << "a";
+[a-z][a-z]  std::cout << "b";
+
 
 %%
+
+
+// [a-z] expects an action
+// priority goes from top to bottom
+// abcde -> abe
+// abcdef -> abb
 
 int main()
 {
