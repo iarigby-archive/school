@@ -387,12 +387,12 @@ static yyconst flex_int32_t yy_meta[5] =
 
 static yyconst flex_int16_t yy_base[11] =
     {   0,
-        0,    0,    7,    8,    3,    0,    8,    8,    8,    3
+        0,    0,    7,    8,    3,    0,    0,    0,    8,    3
     } ;
 
 static yyconst flex_int16_t yy_def[11] =
     {   0,
-        9,    1,    9,    9,   10,   10,    9,    9,    0,    9
+        9,    1,    9,    9,   10,   10,   10,   10,    0,    9
     } ;
 
 static yyconst flex_int16_t yy_nxt[13] =
@@ -616,7 +616,7 @@ std::cout << "a";
 case 2:
 YY_RULE_SETUP
 #line 7 "first.l"
-std::cout << "b";
+std::cout << "b"; // priority goes from top to bottom
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
@@ -1526,17 +1526,15 @@ void yyfree (void * ptr )
 
 
 
-
-// [a-z] expects an action
-// priority goes from top to bottom
-
-
 int main()
 {
 	yyFlexLexer lexer(&std::cin, &std::cout);
 	//create an instance of the lexer that uses std cin and out for io
 	lexer.yylex();
 	//call the function
-	//returns the symbols that you type
+	// output now:
+	// abcde -> abe
+	// abcdef -> abb
+
 	return 0;
 }

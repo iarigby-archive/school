@@ -3,8 +3,8 @@
 %%
 
 
-ab  std::cout << "a";
-[a-z][a-z]  std::cout << "b"; // priority goes from top to bottom
+ab		std::cout << "a";
+[a-z][a-z]+	std::cout << "b"; // priority goes from top to bottom
 
 
 %%
@@ -16,8 +16,8 @@ int main()
 	lexer.yylex();
 	//call the function
 	// output now:
-	// abcde -> abe
-	// abcdef -> abb
+	// it only ouputs a single b on 2+ letters (other than ab)
+	// in case of abc the second rule is matched (because of rule 2 from lecture)
 
 	return 0;
 }
