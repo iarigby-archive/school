@@ -80,6 +80,10 @@ int main( int argc, char* args[] )
 				mouseY = ev.motion.y;
 				break;
 			case SDL_MOUSEBUTTONUP:
+				if (ev.button.button == SDL_BUTTON_LEFT)
+					redColor = false;
+				else if (ev.button.button == SDL_BUTTON_RIGHT)
+					redColor = true;
 				// buttons: SDL_BUTTON_LEFT, SDL_BUTTON_MIDDLE, 
 				//		SDL_BUTTON_RIGHT, SDL_BUTTON_WHEELUP, SDL_BUTTON_WHEELDOWN
 				// ev.button.button
@@ -89,7 +93,7 @@ int main( int argc, char* args[] )
 
 		// clear the screen with white
 		SDL_SetRenderDrawColor(ren, 255, 255, 255, 255);
-		//SDL_RenderClear(ren);
+		SDL_RenderClear(ren);
 
 		// draw a green line
 		SDL_SetRenderDrawColor(	ren, 0, 255, 0,	 255);	
@@ -103,7 +107,11 @@ int main( int argc, char* args[] )
 		cursor_rect.w = 20;
 		cursor_rect.h = 20;
 
-		SDL_SetRenderDrawColor( ren, 255, 0, 0, 255 );
+		if (redColor)
+			SDL_SetRenderDrawColor(ren, 255, 0, 0, 255);
+		else 
+			SDL_SetRenderDrawColor(ren, 0, 0, 0, 255);
+		
 		SDL_RenderFillRect( ren, &cursor_rect);
 
 		// present the current frame
