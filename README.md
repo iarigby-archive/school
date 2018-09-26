@@ -24,7 +24,7 @@ For first two classes I had to leave early since it's overlapping with another c
 - change color of the rectangle with mouse clicks
 - increase and decrease the size of the rectangle with `m` and `p` keys
 
-#TODO 
+# TODO 
 [] add website link
 [] update first and second week with solution files
 [] create script that automatically generates links and descriptions in master from tags
