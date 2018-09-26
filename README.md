@@ -25,6 +25,6 @@ For first two classes I had to leave early since it's overlapping with another c
 - increase and decrease the size of the rectangle with `m` and `p` keys
 
 # TODO 
-[] add website link
-[] update first and second week with solution files
-[] create script that automatically generates links and descriptions in master from tags
+- [ ] add website link
+- [ ] update first and second week with solution files
+- [ ] create script that automatically generates links and descriptions in master from tags
