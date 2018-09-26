@@ -4,9 +4,9 @@
 
 ## Contents of this repo
 
-I create a branch for each practice lesson. brief summary for each class:
+I create a branch for each practice lesson. brief summary for each class (including direct link to branch in headers):
 
-### Second practice 
+### [Second practice](https://github.com/iarigby/compilers/tree/first-practice) 
 > incorrectly named first-practice because that's when we first used the computers :grin:
 
 I commited `first.l`, `lex.yy.cc` and `a.out` after each major change. when viewing each commit, you can clearly see how changes in first.l impacted the flex output.
