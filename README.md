@@ -9,7 +9,7 @@ I create a branch for each practice lesson. brief summary for each class (includ
 ### [Second practice](https://github.com/iarigby/compilers/tree/first-practice) 
 > incorrectly named first-practice because that's when we first used the computers :grin:
 
-I commited `first.l`, `lex.yy.cc` and `a.out` after each major change. when viewing each commit, you can clearly see how changes in first.l impacted the flex output.
+I commited `first.l`, `lex.yy.cc` and `a.out` after each major change. You can see the commits [here](https://github.com/iarigby/compilers/commits/first-practice) when viewing each commit, you can clearly see how changes in first.l impacted the flex output.
 #### Contents of the lesson
 introduction to FLEX and regex
 - capturing regex and assigning actions
