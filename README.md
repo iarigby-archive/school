@@ -4,7 +4,7 @@ This is repository for practice classes of 2018 computer graphics course in ELTE
 For first two classes I had to leave early since it's overlapping with another class, but for following weeks I'll probably stay longer
 
 ## General Info
-TODO add website link
+
 
 ## Contents 
 > branch descriptions with links (click the header) for each practice class and general overview of topics covered
@@ -23,3 +23,8 @@ TODO add website link
 - don't clear the screen after each render
 - change color of the rectangle with mouse clicks
 - increase and decrease the size of the rectangle with `m` and `p` keys
+
+#TODO 
+[] add website link
+[] update first and second week with solution files
+[] create script that automatically generates links and descriptions in master from tags
