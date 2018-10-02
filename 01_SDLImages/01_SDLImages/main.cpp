@@ -122,12 +122,19 @@ int main( int argc, char* args[] )
 		int frame = SDL_GetTicks() / 100  % 30;  // t/100 instead of t*30/300 ( here 100 determines speed)
 
 		int row = frame / 6;
-		int col = frame % 5;
+		int col = frame % 6;
 
 		source_rect.x = col * source_rect.w;
 		source_rect.y = row * source_rect.h;
 
-		SDL_RenderCopy(ren, tex, &source_rect, 0);
+
+		SDL_Rect place;
+		place.x = 300;
+		place.y = 200;
+		place.w = source_rect.w;
+		place.h = source_rect.h;
+
+		SDL_RenderCopy(ren, tex, &source_rect,&place);
 
 		// display the contents of the backbuffer
 		SDL_RenderPresent(ren);
