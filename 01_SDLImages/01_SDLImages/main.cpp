@@ -64,7 +64,7 @@ int main( int argc, char* args[] )
 	//
 	// 3. step: load the image file
 	//
-	SDL_Texture* tex = IMG_LoadTexture( ren, "kep.png" );
+	SDL_Texture* tex = IMG_LoadTexture( ren, "animation_sheet.gif" );
 	if ( tex == 0 )
 	{
         std::cout << "[IMG_LoadTexture]: " << IMG_GetError() << std::endl;
@@ -82,15 +82,6 @@ int main( int argc, char* args[] )
 	SDL_Event ev;
 	// the X and Y coordinates of the mouse
 	Sint32 mouseX = 0, mouseY = 0;
-
-
-
-	float image_x = 0;
-	float image_y = 0;
-
-	int vx = 1, vy = 1;
-
-	float time = SDL_GetTicks();
 
 	while (!quit)
 	{
@@ -122,10 +113,17 @@ int main( int argc, char* args[] )
 		SDL_RenderClear(ren);
 
 		// draw the image centered at the mouse cursor
-		SDL_Rect cursor_rect;
-		SDL_QueryTexture( tex, 0, 0, &cursor_rect.w, &cursor_rect.h );
+		SDL_Rect source_rect;
+		SDL_QueryTexture( tex, 0, 0, &source_rect.w, &source_rect.h );
 		
-	
+		source_rect.w /= 6;
+		source_rect.h /= 5;
+
+		source_rect.x = 0;
+		source_rect.y = 0;
+
+		SDL_RenderCopy(ren, tex, &source_rect, 0);
+
 		// display the contents of the backbuffer
 		SDL_RenderPresent(ren);
 	}
