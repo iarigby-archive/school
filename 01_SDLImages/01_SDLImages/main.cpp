@@ -85,8 +85,10 @@ int main( int argc, char* args[] )
 
 
 
-	int image_x = 0;
-	int image_y = 0;
+	float image_x = 0;
+	float image_y = 0;
+
+	int time = SDL_GetTicks();
 
 	while (!quit)
 	{
@@ -125,8 +127,12 @@ int main( int argc, char* args[] )
 		// the speed by which the square will move
 		// will vary from machine to machine
 		// instead we should calculate by time elapsed
-		image_x++;
-		image_y++;
+		// square will move one pixel each millisecond without division
+		// SDL_GetTicks() - time is always less than 100 because of pc speed
+		image_x += (SDL_GetTicks() - time) / 20.0;
+		image_y += (SDL_GetTicks() - time) / 20.0;
+
+		time = SDL_GetTicks();
 
 		cursor_rect.x = image_x;
 		cursor_rect.y = image_y;
