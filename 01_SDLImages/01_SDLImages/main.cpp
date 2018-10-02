@@ -122,6 +122,9 @@ int main( int argc, char* args[] )
 		SDL_Rect cursor_rect;
 		SDL_QueryTexture( tex, 0, 0, &cursor_rect.w, &cursor_rect.h );
 		
+		image_x++;
+		image_y++;
+
 		cursor_rect.x = image_x;
 		cursor_rect.y = image_y;
 
