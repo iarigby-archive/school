@@ -17,10 +17,14 @@
     Do not forget about keywords, literals, operators, separator symbols,
     comments and whitespaces!
  */
+ 
+ 
+begin|end	std::cout << "found " << YYText() << std::endl;
+[ \t\n]		
 
 . {
     std::cerr << "Line " << lineno() << ": Lexical error." << std::endl;
-    exit(1);
+    //exit(1);
 }
 
 %%
