@@ -184,8 +184,27 @@ extern yy_size_t yyleng;
 #define EOB_ACT_END_OF_FILE 1
 #define EOB_ACT_LAST_MATCH 2
 
-    #define YY_LESS_LINENO(n)
-    #define YY_LINENO_REWIND_TO(ptr)
+    /* Note: We specifically omit the test for yy_rule_can_match_eol because it requires
+     *       access to the local variable yy_act. Since yyless() is a macro, it would break
+     *       existing scanners that call yyless() from OUTSIDE yylex. 
+     *       One obvious solution it to make yy_act a global. I tried that, and saw
+     *       a 5% performance hit in a non-yylineno scanner, because yy_act is
+     *       normally declared as a register variable-- so it is not worth it.
+     */
+    #define  YY_LESS_LINENO(n) \
+            do { \
+                int yyl;\
+                for ( yyl = n; yyl < yyleng; ++yyl )\
+                    if ( yytext[yyl] == '\n' )\
+                        --yylineno;\
+            }while(0)
+    #define YY_LINENO_REWIND_TO(dst) \
+            do {\
+                const char *p;\
+                for ( p = yy_cp-1; p >= (dst); --p)\
+                    if ( *p == '\n' )\
+                        --yylineno;\
+            }while(0)
     
 /* Return all but the first "n" matched characters back to the input stream. */
 #define yyless(n) \
@@ -343,10 +362,9 @@ struct yy_trans_info
 	flex_int32_t yy_verify;
 	flex_int32_t yy_nxt;
 	};
-static yyconst flex_int16_t yy_accept[14] =
+static yyconst flex_int16_t yy_accept[7] =
     {   0,
-        0,    0,    3,    2,    2,    2,    2,    1,    0,    0,
-        0,    0,    0
+        0,    0,    3,    1,    2,    0
     } ;
 
 static yyconst flex_int32_t yy_ec[256] =
@@ -355,8 +373,8 @@ static yyconst flex_int32_t yy_ec[256] =
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    3,    1,    1,    1,    4,    5,    6,
-        5,    6,    5,    6,    5,    6,    5,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
@@ -381,36 +399,35 @@ static yyconst flex_int32_t yy_ec[256] =
         1,    1,    1,    1,    1
     } ;
 
-static yyconst flex_int32_t yy_meta[7] =
+static yyconst flex_int32_t yy_meta[3] =
     {   0,
-        1,    1,    1,    1,    1,    1
+        1,    1
     } ;
 
-static yyconst flex_int16_t yy_base[15] =
+static yyconst flex_int16_t yy_base[7] =
     {   0,
-        0,    0,    2,   15,    5,    8,    0,   15,    0,    0,
-        0,    0,   15,    0
+        0,    0,    3,    4,    4,    4
     } ;
 
-static yyconst flex_int16_t yy_def[15] =
+static yyconst flex_int16_t yy_def[7] =
     {   0,
-       14,   14,   13,   13,   13,   13,    5,   13,    6,    5,
-        6,    5,    0,   13
+        6,    1,    6,    6,    6,    0
     } ;
 
-static yyconst flex_int16_t yy_nxt[22] =
+static yyconst flex_int16_t yy_nxt[7] =
     {   0,
-        4,   13,   13,    5,    6,    7,    8,    9,   10,   11,
-       12,   10,   11,   12,    3,   13,   13,   13,   13,   13,
-       13
+        4,    5,    6,    3,    6,    6
     } ;
 
-static yyconst flex_int16_t yy_chk[22] =
+static yyconst flex_int16_t yy_chk[7] =
     {   0,
-       14,    3,    0,    2,    2,    2,    5,    5,    5,    5,
-        5,    6,    6,    6,   13,   13,   13,   13,   13,   13,
-       13
+        1,    1,    3,    6,    6,    6
     } ;
+
+/* Table of booleans, true if rule could match eol. */
+static yyconst flex_int32_t yy_rule_can_match_eol[3] =
+    {   0,
+0, 0,     };
 
 /* The intent behind this definition is that it'll catch
  * any uses of REJECT which flex missed.
@@ -419,8 +436,11 @@ static yyconst flex_int16_t yy_chk[22] =
 #define yymore() yymore_used_but_not_detected
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
-#line 1 "first.l"
-#line 424 "lex.yy.cc"
+#line 1 "while.l"
+#line 4 "while.l"
+#include <iostream>
+#include <stdlib.h>
+#line 444 "lex.yy.cc"
 
 #define INITIAL 0
 
@@ -515,9 +535,6 @@ static int yy_flex_strlen (yyconst char * );
 #endif
 
 #define YY_RULE_SETUP \
-	if ( yyleng > 0 ) \
-		YY_CURRENT_BUFFER_LVALUE->yy_at_bol = \
-				(yytext[yyleng - 1] == '\n'); \
 	YY_USER_ACTION
 
 /** The main scanner function which does all the work.
@@ -555,10 +572,21 @@ YY_DECL
 		}
 
 	{
-#line 3 "first.l"
+#line 8 "while.l"
 
 
-#line 562 "lex.yy.cc"
+ /* Here come the regular expressions and the corresponding actions.
+    For the moment, we produce an output line for each token found.
+
+    For instance:
+            begin   std::cout << "begin keyword" << std::endl;
+            [0-9]+	std::cout << "number literal" << std::endl;
+
+    Do not forget about keywords, literals, operators, separator symbols,
+    comments and whitespaces!
+ */
+
+#line 590 "lex.yy.cc"
 
 	while ( 1 )		/* loops until end-of-file is reached */
 		{
@@ -573,7 +601,6 @@ YY_DECL
 		yy_bp = yy_cp;
 
 		yy_current_state = (yy_start);
-		yy_current_state += YY_AT_BOL();
 yy_match:
 		do
 			{
@@ -586,13 +613,13 @@ yy_match:
 			while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 				{
 				yy_current_state = (int) yy_def[yy_current_state];
-				if ( yy_current_state >= 14 )
+				if ( yy_current_state >= 7 )
 					yy_c = yy_meta[(unsigned int) yy_c];
 				}
 			yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
 			++yy_cp;
 			}
-		while ( yy_base[yy_current_state] != 15 );
+		while ( yy_base[yy_current_state] != 4 );
 
 yy_find_action:
 		yy_act = yy_accept[yy_current_state];
@@ -604,6 +631,16 @@ yy_find_action:
 			}
 
 		YY_DO_BEFORE_ACTION;
+
+		if ( yy_act != YY_END_OF_BUFFER && yy_rule_can_match_eol[yy_act] )
+			{
+			yy_size_t yyl;
+			for ( yyl = 0; yyl < yyleng; ++yyl )
+				if ( yytext[yyl] == '\n' )
+					   
+    yylineno++;
+;
+			}
 
 do_action:	/* This label is used only to access EOF actions. */
 
@@ -617,21 +654,19 @@ do_action:	/* This label is used only to access EOF actions. */
 			goto yy_find_action;
 
 case 1:
-*yy_cp = (yy_hold_char); /* undo effects of setting up yytext */
-(yy_c_buf_p) = yy_cp -= 1;
-YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 5 "first.l"
+#line 21 "while.l"
 {
-	std::cout << "accepted: " << YYText() << std::endl; 
+    std::cerr << "Line " << lineno() << ": Lexical error." << std::endl;
+    exit(1);
 }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 9 "first.l"
+#line 26 "while.l"
 ECHO;
 	YY_BREAK
-#line 635 "lex.yy.cc"
+#line 670 "lex.yy.cc"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1001,7 +1036,6 @@ int yyFlexLexer::yy_get_next_buffer()
 	register char *yy_cp;
     
 	yy_current_state = (yy_start);
-	yy_current_state += YY_AT_BOL();
 
 	for ( yy_cp = (yytext_ptr) + YY_MORE_ADJ; yy_cp < (yy_c_buf_p); ++yy_cp )
 		{
@@ -1014,7 +1048,7 @@ int yyFlexLexer::yy_get_next_buffer()
 		while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 			{
 			yy_current_state = (int) yy_def[yy_current_state];
-			if ( yy_current_state >= 14 )
+			if ( yy_current_state >= 7 )
 				yy_c = yy_meta[(unsigned int) yy_c];
 			}
 		yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
@@ -1042,11 +1076,11 @@ int yyFlexLexer::yy_get_next_buffer()
 	while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 		{
 		yy_current_state = (int) yy_def[yy_current_state];
-		if ( yy_current_state >= 14 )
+		if ( yy_current_state >= 7 )
 			yy_c = yy_meta[(unsigned int) yy_c];
 		}
 	yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
-	yy_is_jam = (yy_current_state == 13);
+	yy_is_jam = (yy_current_state == 6);
 
 		return yy_is_jam ? 0 : yy_current_state;
 }
@@ -1082,6 +1116,10 @@ int yyFlexLexer::yy_get_next_buffer()
 		}
 
 	*--yy_cp = (char) c;
+
+    if ( c == '\n' ){
+        --yylineno;
+    }
 
 	(yytext_ptr) = yy_bp;
 	(yy_hold_char) = *yy_cp;
@@ -1152,7 +1190,10 @@ int yyFlexLexer::yy_get_next_buffer()
 	*(yy_c_buf_p) = '\0';	/* preserve yytext */
 	(yy_hold_char) = *++(yy_c_buf_p);
 
-	YY_CURRENT_BUFFER_LVALUE->yy_at_bol = (c == '\n');
+	if ( c == '\n' )
+		   
+    yylineno++;
+;
 
 	return c;
 }
@@ -1533,24 +1574,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 8 "first.l"
+#line 25 "while.l"
 
 
 
-int main()
-{
-	yyFlexLexer lexer(&std::cin, &std::cout);
-	//create an instance of the lexer that uses std cin and out for io
-	lexer.yylex(); 
-	//accept sentences that are composed of even numbers and commas
-	//the sentences are series of even numbers separated by commas
-	//with at least one even number
-	//examples: 
-	//18
-	//2,4
-	//0,12,66,78	
-	//shouldn't accept
-	//2,3,4
-	//2,44,
-	return 0;
-}
