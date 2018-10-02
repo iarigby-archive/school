@@ -122,6 +122,9 @@ int main( int argc, char* args[] )
 		SDL_Rect cursor_rect;
 		SDL_QueryTexture( tex, 0, 0, &cursor_rect.w, &cursor_rect.h );
 		
+		// the speed by which the square will move
+		// will vary from machine to machine
+		// instead we should calculate by time elapsed
 		image_x++;
 		image_y++;
 
