@@ -1,0 +1,31 @@
+------------------------------------------------------------
+  INTRODUCTION
+------------------------------------------------------------
+
+The file `while.l' defines all the token types of the While language [1], but the parser defined in `while.y' is incomplete. The grammar is only a skeleton, and misses several expression and statement formats.
+
+------------------------------------------------------------
+  TASK DESCRIPTION
+------------------------------------------------------------
+
+Your task is to extend this skeleton into a complete syntax definition of the While language:
+ - extend declarations with boolean variables
+ - extend expressions: operators missing from the syntax are sub, mul, div, mod, less, gr, eq, and, or
+ - extend statements with if-branching while-loop
+
+------------------------------------------------------------
+  TESTING
+------------------------------------------------------------
+
+After extending the syntax with all the operators in expressions, `expr.while' and `expr2.while' should parse successfully.
+
+After extending the syntax with `if' and `while' statements, `gcd.while' should parse successfully.
+
+Do not forget that you can use the Makefile for compiling the project (execute the command `make').
+In order to test your parser, execute `./while simple.while', which will output the syntax rules used by the parser.
+
+------------------------------------------------------------
+  LINK
+------------------------------------------------------------
+
+ [1] http://deva.web.elte.hu/compilers/while-language.html
