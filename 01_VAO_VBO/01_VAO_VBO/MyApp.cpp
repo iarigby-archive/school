@@ -27,10 +27,13 @@ bool CMyApp::Init()
 	Vertex vert[] =
 	{ 
 		// position x,  y, z;  color     r, g, b
-		{glm::vec3(-1, -1, 0), glm::vec3(1, 0, 0)},
-		{glm::vec3( 1, -1, 0), glm::vec3(0, 1, 0)},
-		{glm::vec3(-1,  1, 0), glm::vec3(0, 0, 1)},
-		{glm::vec3( 1,  1, 0), glm::vec3(1, 1, 1)},
+		// {glm::vec3(-1, -1, 0), glm::vec3(1, 0, 0)},
+		// {glm::vec3( 1, -1, 0), glm::vec3(0, 1, 0)},
+		// {glm::vec3(-1,  1, 0), glm::vec3(0, 0, 1)},
+		// {glm::vec3( 1,  1, 0), glm::vec3(1, 1, 1)},
+		 {glm::vec3(-1, -1, 0), glm::vec3(1, 0, 0)},
+		 {glm::vec3(0, -1, 0), glm::vec3(1, 0, 0)},
+		 {glm::vec3(-1, 0, 0), glm::vec3(1, 0, 0)}
 	};
 
 	// generate a VAO ID
@@ -95,7 +98,7 @@ void CMyApp::Render()
 	glBindVertexArray(m_vaoID);
 
 	// draw
-	glDrawArrays(	GL_TRIANGLE_STRIP,	// primitive type
+	glDrawArrays(	GL_TRIANGLES,	// primitive type
 					0,					// start index
 					4);					// number of vertices
 
