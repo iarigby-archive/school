@@ -61,6 +61,8 @@ declaration:
     {
         std::cout << "declaration -> T_INTEGER T_ID T_SEMICOLON" << std::endl;
     }
+    
+    // add another one for boolean
 ;
 
 statements:
