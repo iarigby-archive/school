@@ -33,7 +33,10 @@ bool CMyApp::Init()
 		// {glm::vec3( 1,  1, 0), glm::vec3(1, 1, 1)},
 		 {glm::vec3(-1, -1, 0), glm::vec3(1, 0, 0)},
 		 {glm::vec3(0, -1, 0), glm::vec3(1, 0, 0)},
-		 {glm::vec3(-1, 0, 0), glm::vec3(1, 0, 0)}
+		 {glm::vec3(-1, 0, 0), glm::vec3(1, 0, 0)},
+		 {glm::vec3(1, -1, 0), glm::vec3(0, 1, 0)},
+		 {glm::vec3(1, 0, 0), glm::vec3(0, 1, 0)},
+		 {glm::vec3(0, -1, 0), glm::vec3(0, 1, 0)}
 	};
 
 	// generate a VAO ID
@@ -100,7 +103,7 @@ void CMyApp::Render()
 	// draw
 	glDrawArrays(	GL_TRIANGLES,	// primitive type
 					0,					// start index
-					4);					// number of vertices
+					3);					// number of vertices
 
 	// VAO off
 	glBindVertexArray(0);
