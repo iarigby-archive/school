@@ -103,7 +103,7 @@ void CMyApp::Render()
 	// draw
 	glDrawArrays(	GL_TRIANGLES,	// primitive type
 					0,					// start index
-					3);					// number of vertices
+					6);					// number of vertices
 
 	// VAO off
 	glBindVertexArray(0);
