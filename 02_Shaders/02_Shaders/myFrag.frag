@@ -8,10 +8,10 @@ void main()
 {
 	float x = vs_out_pos.x;
 	float y = vs_out_pos.y;
-	if (x + y < 0)
-		fs_out_col = vec4(1,0,0,1);
+	if (x*x + y*y < 1)
+		fs_out_col = vec4(1, 0, 0, 1);
 	else
-		fs_out_col = vec4(0,0,0,1);
+		fs_out_col = vec4(0, 0, 0, 1);
 }
 
 // 1.: draw a white rectangle
