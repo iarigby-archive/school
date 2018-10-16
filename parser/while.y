@@ -61,8 +61,12 @@ declaration:
     {
         std::cout << "declaration -> T_INTEGER T_ID T_SEMICOLON" << std::endl;
     }
-    
+|
     // add another one for boolean
+    T_BOOLEAN T_ID T_SEMICOLON
+    {
+        std::cout << "declaration -> T_BOOLEAN T_ID T_SEMICOLON" << std::endl;
+    }
 ;
 
 statements:
@@ -97,6 +101,12 @@ statement:
     {
         std::cout << "statement -> write" << std::endl;
     }
+|
+	T_WHILE expression T_DO statements T_DONE
+|
+	T_IF expression T_THEN statements T_ENDIF
+|
+	T_IF expression T_THEN statements T_ELSE statements T_ENDIF
 ;
 
 assignment:
@@ -154,5 +164,50 @@ expression:
     T_OPEN expression T_CLOSE
     {
         std::cout << "expression -> T_OPEN expression T_CLOSE" << std::endl;
+    }
+|
+    expression T_SUB expression
+    {
+        std::cout << "expression -> expression T_SUB expression" << std::endl;
+    }
+|
+    expression T_MUL expression
+    {
+        std::cout << "expression -> expression T_MUL expression" << std::endl;
+    }
+|
+    expression T_DIV expression
+    {
+        std::cout << "expression -> expression T_DIV expression" << std::endl;
+    }
+|
+    expression T_MOD expression
+    {
+        std::cout << "expression -> expression T_MOD expression" << std::endl;
+    }
+|
+    expression T_LESS expression
+    {
+        std::cout << "expression -> expression T_LESS expression" << std::endl;
+    }
+|
+    expression T_GR expression
+    {
+        std::cout << "expression -> expression T_GR expression" << std::endl;
+    }
+|
+    expression T_EQ expression
+    {
+        std::cout << "expression -> expression T_EQ expression" << std::endl;
+    }
+|
+    expression T_AND expression
+    {
+        std::cout << "expression -> expression T_AND expression" << std::endl;
+    }
+|
+    expression T_OR expression
+    {
+        std::cout << "expression -> expression T_OR expression" << std::endl;
     }
 ;
