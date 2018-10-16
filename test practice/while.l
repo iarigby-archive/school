@@ -45,6 +45,7 @@ mod         return Parser::T_MOD;
 ")"         return Parser::T_CLOSE;
 
 {DIGIT}+	return Parser::T_NUM;
+"0x"[0-9a-f]{0,6}?	return Parser::T_NUM;
 true        return Parser::T_TRUE;
 false       return Parser::T_FALSE;
 

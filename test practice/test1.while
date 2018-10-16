@@ -6,7 +6,7 @@ program FoO
 begin
   read( a );
   dIvIsOrFoUnD := false;
-  i := 2;
+  i := 0xff;
   while not dIvIsOrFoUnD and i < a do
     if a mod i = 0 then
       dIvIsOrFoUnD := true;
