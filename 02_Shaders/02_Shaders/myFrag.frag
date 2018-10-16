@@ -6,7 +6,12 @@ out vec4 fs_out_col;
 
 void main()
 {
-	fs_out_col = vec4(1, 0, 1, 1);
+	float x = vs_out_pos.x;
+	float y = vs_out_pos.y;
+	if (x>0)
+		fs_out_col = vec4(1,0,0,1);
+	else
+		fs_out_col = vec4(0,0,0,1);
 }
 
 // 1.: draw a white rectangle
