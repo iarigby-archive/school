@@ -25,6 +25,8 @@
 %token T_TRUE
 %token T_FALSE
 %token T_ID
+%token T_REPEAT
+%token T_UNTIL
 
 %left T_OR T_AND
 %left T_EQ
@@ -110,6 +112,11 @@ statement:
     {
         std::cout << "statement -> loop" << std::endl;
     }
+|
+	T_REPEAT statement T_UNTIL expression T_DONE
+	{
+		std::cout << "statement -> T_REPEAT statement T_UNTIL condition" << std::endl;
+	}
 ;
 
 assignment:

@@ -28,6 +28,8 @@ do          return Parser::T_DO;
 done        return Parser::T_DONE;
 read        return Parser::T_READ;
 write       return Parser::T_WRITE;
+repeat		return Parser::T_REPEAT;
+until		return Parser::T_UNTIL;
 ";"         return Parser::T_SEMICOLON;
 ":="        return Parser::T_ASSIGN;
 "="         return Parser::T_EQ;
