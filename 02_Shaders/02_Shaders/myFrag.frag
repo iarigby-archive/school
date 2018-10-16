@@ -8,7 +8,7 @@ void main()
 {
 	float x = vs_out_pos.x;
 	float y = vs_out_pos.y;
-	if (x>0)
+	if (x + y < 0)
 		fs_out_col = vec4(1,0,0,1);
 	else
 		fs_out_col = vec4(0,0,0,1);
