@@ -11,7 +11,7 @@ void main()
 	if (x*x + y*y < 1)
 		fs_out_col = vec4(1, 0, 0, 1);
 	else
-		fs_out_col = vec4(0, 0, 0, 1);
+		discard;
 }
 
 // 1.: draw a white rectangle
