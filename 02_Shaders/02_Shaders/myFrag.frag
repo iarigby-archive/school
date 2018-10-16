@@ -8,7 +8,7 @@ void main()
 {
 	float x = vs_out_pos.x;
 	float y = vs_out_pos.y;
-	if (x*x + y*y < 1)
+	if (abs(x*x + y*y - 1) < 0.01)
 		fs_out_col = vec4(1, 0, 0, 1);
 	else
 		discard;
