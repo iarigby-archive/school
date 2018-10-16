@@ -27,6 +27,8 @@
 %token T_ID
 %token T_REPEAT
 %token T_UNTIL
+%token T_QUESTION_MARK
+%token T_COLON
 
 %left T_OR T_AND
 %left T_EQ
@@ -123,6 +125,7 @@ assignment:
     T_ID T_ASSIGN expression T_SEMICOLON
     {
         std::cout << "assignment -> T_ID T_ASSIGN expression T_SEMICOLON" << std::endl;
+        
     }
 ;
 
@@ -238,5 +241,10 @@ expression:
     T_OPEN expression T_CLOSE
     {
         std::cout << "expression -> T_OPEN expression T_CLOSE" << std::endl;
+    }
+|
+	T_OPEN expression T_QUESTION_MARK expression T_COLON expression T_CLOSE
+	{
+        std::cout << "expression -> T_OPEN expression T_QUESTION_MARK expression T_COLON expression T_CLOSE" << std::endl;
     }
 ;

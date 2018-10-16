@@ -45,6 +45,8 @@ div         return Parser::T_DIV;
 mod         return Parser::T_MOD;
 "("         return Parser::T_OPEN;
 ")"         return Parser::T_CLOSE;
+"?"			return Parser::T_QUESTION_MARK;
+":"			return Parser::T_COLON;
 
 {DIGIT}+	return Parser::T_NUM;
 "0x"[0-9a-f]{0,6}?	return Parser::T_NUM;
@@ -52,6 +54,7 @@ true        return Parser::T_TRUE;
 false       return Parser::T_FALSE;
 
 "#".*\n    // nothing to do
+"/*"(.*|\n)*"*/"
 
 {UPPERCASE}({LOWERCASE}{UPPERCASE})*{LOWERCASE}?[_]*([1-8][0-9]|90)? return Parser::T_ID;
 {LOWERCASE}({UPPERCASE}{LOWERCASE})*{UPPERCASE}?[_]*([1-8][0-9]|90)?  return Parser::T_ID;
