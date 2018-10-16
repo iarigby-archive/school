@@ -11,7 +11,8 @@ void main()
 	float x = vs_out_pos.x;
 	float y = vs_out_pos.y;
 	float w = time / 100000.0; // don't forget the .0
-	if (abs(x*x + y*y - 1) < w)
+	x += w;
+	if (abs(x*x + y*y - 1) < 0.01)
 		fs_out_col = vec4(1, 0, 0, 1);
 	else
 		discard;
