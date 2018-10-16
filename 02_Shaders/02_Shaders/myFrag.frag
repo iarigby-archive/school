@@ -4,11 +4,14 @@ in vec3 vs_out_col;
 in vec3 vs_out_pos;
 out vec4 fs_out_col;
 
+uniform int time;
+
 void main()
 {
 	float x = vs_out_pos.x;
 	float y = vs_out_pos.y;
-	if (abs(x*x + y*y - 1) < 0.01)
+	float w = time / 100000.0; // don't forget the .0
+	if (abs(x*x + y*y - 1) < w)
 		fs_out_col = vec4(1, 0, 0, 1);
 	else
 		discard;

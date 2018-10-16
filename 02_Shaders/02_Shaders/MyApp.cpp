@@ -143,6 +143,10 @@ void CMyApp::Render()
 	// shader on
 	glUseProgram( m_programID );
 
+	// we can only transfer value to the shader that is running
+	GLuint id = glGetUniformLocation(m_programID, "time");
+	glUniform1i(id, SDL_GetTicks());
+
 	// VAO on
 	glBindVertexArray(m_vaoID);
 
