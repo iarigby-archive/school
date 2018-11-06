@@ -151,7 +151,8 @@ void CMyApp::Render()
 		glm::scale<float>( s_x, s_y, s_z )
 
 	*/
-	m_matWorld = glm::scale(glm::vec3(2, 3, 1));
+	// <float> is needed because vec  is int and pi is float and results in error
+	m_matWorld = glm::rotate<float>(M_PI / 4, glm::vec3(0, 0, 1));
 
 	glUniformMatrix4fv( m_loc_world,// uniform's location
 						1,			// send 1 matrix
