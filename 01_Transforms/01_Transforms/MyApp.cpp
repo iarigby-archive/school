@@ -153,7 +153,7 @@ void CMyApp::Render()
 	*/
 	// <float> is needed because vec  is int and pi is float and results in error
 	int t = SDL_GetTicks();
-	m_matWorld = glm::rotate<float>(2*M_PI *t/ 1000.0f, glm::vec3(1, 0, 0));
+	m_matWorld = glm::rotate<float>(2*M_PI *t/ 1000.0f, glm::vec3(0, 0, 1));
 
 	glUniformMatrix4fv( m_loc_world,// uniform's location
 						1,			// send 1 matrix
