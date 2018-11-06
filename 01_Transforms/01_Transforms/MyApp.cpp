@@ -151,7 +151,7 @@ void CMyApp::Render()
 		glm::scale<float>( s_x, s_y, s_z )
 
 	*/
-	m_matWorld = glm::translate(glm::vec3(1,0,0));
+	m_matWorld = glm::scale(glm::vec3(2, 3, 1));
 
 	glUniformMatrix4fv( m_loc_world,// uniform's location
 						1,			// send 1 matrix
