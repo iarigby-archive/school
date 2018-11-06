@@ -145,7 +145,7 @@ void CMyApp::Render()
 
 	// we can only transfer value to the shader that is running
 	GLuint id = glGetUniformLocation(m_programID, "time");
-	glUniform1i(id, SDL_GetTicks());
+	glUniform1f(id, SDL_sin(SDL_GetTicks() / 1000.0));
 
 	// VAO on
 	glBindVertexArray(m_vaoID);
