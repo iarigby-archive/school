@@ -168,6 +168,21 @@ void CMyApp::Render()
 	// draw
 	glDrawArrays(GL_TRIANGLES, 0, 6);
 
+	m_matWorld = glm::translate(glm::vec3(-2, -1, 1));
+
+	glUniformMatrix4fv(m_loc_world,// uniform's location
+		1,			// send 1 matrix
+		GL_FALSE,	// do no transpose the matrix
+		&(m_matWorld[0][0])); // read data from here, 16 x sizeof(float) 
+	glUniformMatrix4fv(m_loc_view, 1, GL_FALSE, &(m_matView[0][0]));
+	glUniformMatrix4fv(m_loc_proj, 1, GL_FALSE, &(m_matProj[0][0]));
+
+	// VAO on
+	glBindVertexArray(m_vaoID);
+
+	// draw
+	glDrawArrays(GL_TRIANGLES, 0, 6);
+
 	// VAO off
 	glBindVertexArray(0);
 
