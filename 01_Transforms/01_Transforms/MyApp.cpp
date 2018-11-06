@@ -153,7 +153,8 @@ void CMyApp::Render()
 	*/
 	// <float> is needed because vec  is int and pi is float and results in error
 	int t = SDL_GetTicks();
-	m_matWorld = glm::translate(glm::vec3(2, 1, 1));
+	auto rotate = glm::rotate<float>(2 * M_PI * t / 1000.0f, glm::vec3(0, 0, 1));
+	m_matWorld = rotate*glm::translate(glm::vec3(0.5, 0, 1))*glm::scale(glm::vec3(0.5,0.5,0.5));
 
 	glUniformMatrix4fv( m_loc_world,// uniform's location
 						1,			// send 1 matrix
@@ -168,7 +169,7 @@ void CMyApp::Render()
 	// draw
 	glDrawArrays(GL_TRIANGLES, 0, 6);
 
-	m_matWorld = glm::translate(glm::vec3(-2, -1, 1));
+	m_matWorld = rotate*glm::translate(glm::vec3(2, 0, 1))*glm::scale(glm::vec3(0.8, 0.8, 0.8));
 
 	glUniformMatrix4fv(m_loc_world,// uniform's location
 		1,			// send 1 matrix
