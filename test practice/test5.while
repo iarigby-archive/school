@@ -1,0 +1,16 @@
+program t
+integer i;
+boolean b;
+begin
+read(i);
+/* comment
+repeat
+i := i - 1;
+until 
+i = 0
+done */
+/*** tricky /// comment /* ***/
+b := (i = 0);
+write(i);
+write(b);
+end
