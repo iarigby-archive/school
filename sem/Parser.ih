@@ -17,7 +17,12 @@ inline void Parser::error(char const *msg)
 inline int Parser::lex()
 {
     d_loc__.first_line = lexer.lineno();
-    return lexer.yylex();
+    int ret = lexer.yylex();
+    if( ret == T_ID )
+    {
+      d_val__.name = new std::string(lexer.YYText());
+    }
+    return ret;
 }
 
 inline void Parser::print()         

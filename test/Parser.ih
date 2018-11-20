@@ -17,6 +17,10 @@ inline void Parser::error(char const *msg)
 inline int Parser::lex()
 {
     d_loc__.first_line = lexer.lineno();
+    if( ret == TOKEN_ID )
+    {
+      d_val__.name = new std::string(lexer.YYText());
+    }
     return lexer.yylex();
 }
 

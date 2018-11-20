@@ -1,6 +1,12 @@
-%baseclass-preinclude <iostream>
+%baseclass-preinclude "semantics.h"
 
 %lsp-needed
+
+%union
+{
+  std::string *name;
+  type *expr_type;
+}
 
 %token T_PROGRAM
 %token T_BEGIN
@@ -24,7 +30,7 @@
 %token T_NUM
 %token T_TRUE
 %token T_FALSE
-%token T_ID
+%token <name> T_ID
 
 %left T_OR T_AND
 %left T_EQ
@@ -34,7 +40,6 @@
 %nonassoc T_NOT
 
 %start program
-
 %%
 
 program:
@@ -47,24 +52,40 @@ program:
 declarations:
     // empty
     {
-        std::cout << "declarations -> epsilon" << std::endl;
+        //std::cout << "declarations -> epsilon" << std::endl;
     }
 |
     declaration declarations
     {
-        std::cout << "declarations -> declaration declarations" << std::endl;
+        //std::cout << "declarations -> declaration declarations" << std::endl;
     }
 ;
 
 declaration:
     T_INTEGER T_ID T_SEMICOLON
     {
-        std::cout << "declaration -> T_INTEGER T_ID T_SEMICOLON" << std::endl;
+       if( symbol_table.count(*$2) > 0 )
+        {
+          std::stringstream ss;
+          ss << "Re-declared variable: " << *$2 << ".\n"
+          << "Line of previous declaration: " << symbol_table[*$2].decl_row << std::endl;
+          error( ss.str().c_str() );
+        }
+        symbol_table[*$2] = var_data( d_loc__.first_line, integer );
+        std::cout << "declared variable " << *$2 << std::endl; 
     }
 |
     T_BOOLEAN T_ID T_SEMICOLON
     {
-        std::cout << "declaration -> T_BOOLEAN T_ID T_SEMICOLON" << std::endl;
+        if( symbol_table.count(*$2) > 0 )
+        {
+          std::stringstream ss;
+          ss << "Re-declared variable: " << *$2 << ".\n"
+          << "Line of previous declaration: " << symbol_table[*$2].decl_row << std::endl;
+          error( ss.str().c_str() );
+        }
+        symbol_table[*$2] = var_data( d_loc__.first_line, boolean );
+        std::cout << "declared variable " << *$2 << std::endl; 
     }
 ;
 
