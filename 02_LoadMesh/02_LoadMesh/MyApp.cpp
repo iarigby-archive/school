@@ -226,6 +226,15 @@ void CMyApp::KeyboardDown(SDL_KeyboardEvent& key)
 	case SDLK_w:
 		eye.z -= 1;
 		break;
+	case SDLK_s:
+		eye.z += 1;
+		break;
+	case SDLK_a:
+		eye.x -= 1;
+		break;
+	case SDLK_d:
+		eye.x += 1;
+		break;
 	}
 }
 
