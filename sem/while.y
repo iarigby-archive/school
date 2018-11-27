@@ -39,6 +39,8 @@
 %left T_MUL T_DIV T_MOD
 %nonassoc T_NOT
 
+%type <expr_type> expression
+
 %start program
 %%
 
@@ -189,16 +191,19 @@ loop:
 expression:
     T_NUM
     {
+        $$ = new type(integer);
         std::cout << "expression -> T_NUM" << std::endl;
     }
 |
     T_TRUE
     {
+        $$ = new type(boolean);
         std::cout << "expression -> T_TRUE" << std::endl;
     }
 |
     T_FALSE
     {
+        $$ = new type(boolean);
         std::cout << "expression -> T_FALSE" << std::endl;
     }
 |
@@ -206,6 +211,7 @@ expression:
     {
         if (symbol_table.count(*$1) > 0 ) {
           std::cout << "expression -> T_ID" << std::endl;
+           $$ = new type (symbol_table[*$1].var_type);
         } else {
           std::stringstream ss;
           ss << "use of undeclared variable in expressin: " << *$1 << ".\n";
@@ -215,6 +221,13 @@ expression:
 |
     expression T_ADD expression
     {
+        if(*$1 != integer || *$3 != integer)
+        {
+           std::stringstream ss;
+           ss << d_loc__.first_line << ": Type error in addition." << std::endl;
+           error( ss.str().c_str() );
+        }
+        $$ = new type(integer);
         std::cout << "expression -> expression T_ADD expression" << std::endl;
     }
 |
