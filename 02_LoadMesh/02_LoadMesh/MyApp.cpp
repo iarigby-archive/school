@@ -120,6 +120,9 @@ bool CMyApp::Init()
 	m_mesh = ObjParser::parse("Suzanne.obj");
 	m_mesh->initBuffers();
 
+	m_diamond = ObjParser::parse("diamond.obj");
+	m_diamond->initBuffers();
+
 	return true;
 }
 
@@ -199,6 +202,11 @@ void CMyApp::DrawMesh()
 
 		m_mesh->draw();
 	}
+
+	m_matWorld = glm::mat4(1.0);
+	glm::mat4 mvp = m_matProj * m_matView * m_matWorld;
+	glUniformMatrix4fv(m_loc_mvp, 1, GL_FALSE, &(mvp[0][0]));
+	m_diamond->draw();
 
 	glUseProgram( 0 );
 }

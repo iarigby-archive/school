@@ -60,5 +60,6 @@ protected:
 	};
 
 	Mesh *m_mesh;
+	Mesh *m_diamond;
 };
 
