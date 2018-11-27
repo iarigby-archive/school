@@ -61,5 +61,7 @@ protected:
 
 	Mesh *m_mesh;
 	Mesh *m_diamond;
+
+	glm::vec3 eye = glm::vec3(0, -10, 20);
 };
 

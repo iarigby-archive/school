@@ -139,8 +139,8 @@ void CMyApp::Clean()
 
 void CMyApp::Update()
 {
-	m_matView = glm::lookAt(glm::vec3(0, -10, 20),		// eye
-							glm::vec3( 0,  0,  0),		// center
+	m_matView = glm::lookAt(eye,		// eye
+							glm::vec3( 0,  0,  0),		// center // if eye moves past this (zooms, the view will be changed)
 							glm::vec3( 0,  1,  0));		// up
 }
 
@@ -221,6 +221,12 @@ void CMyApp::Render()
 
 void CMyApp::KeyboardDown(SDL_KeyboardEvent& key)
 {
+	switch (key.keysym.sym)
+	{
+	case SDLK_w:
+		eye.z -= 1;
+		break;
+	}
 }
 
 void CMyApp::KeyboardUp(SDL_KeyboardEvent& key)
