@@ -181,9 +181,10 @@ void CMyApp::DrawMesh()
 			+ SDL_GetTicks() / 5000.0;
 
 		float t2 = SDL_GetTicks() / 1000.0;
+		//this is where the rotation happens
 		float x = r * cosf(t);
 		float y = r * sinf(t);
-		float z = 4 * sin(t + t2);//* r
+		float z = 0;//4 * sin(t + t2);//* r 
 
 		m_matWorld =
 			glm::translate<float>(glm::vec3(x, y, z));
