@@ -140,7 +140,7 @@ assignment:
           std::cout << "assignment -> T_ID T_ASSIGN expression T_SEMICOLON" << std::endl;
         } else {
           std::stringstream ss;
-          ss << "Use of undeclared variable: " << *$1 << ".\n";
+          ss << "asssignment to undeclared variable: " << *$1 << ".\n";
           error( ss.str().c_str() ); 
         }
         
@@ -150,7 +150,13 @@ assignment:
 read:
     T_READ T_OPEN T_ID T_CLOSE T_SEMICOLON
     {
-        std::cout << "read -> T_READ T_OPEN T_ID T_CLOSE T_SEMICOLON" << std::endl;
+        if (symbol_table.count(*$3) > 0 ) {
+          std::cout << "read -> T_READ T_OPEN T_ID T_CLOSE T_SEMICOLON" << std::endl;
+        } else {
+          std::stringstream ss;
+          ss << "read of undeclared variable: " << *$3 << ".\n";
+          error( ss.str().c_str() ); 
+        }
     }
 ;
 
@@ -198,7 +204,13 @@ expression:
 |
     T_ID
     {
-        std::cout << "expression -> T_ID" << std::endl;
+        if (symbol_table.count(*$1) > 0 ) {
+          std::cout << "expression -> T_ID" << std::endl;
+        } else {
+          std::stringstream ss;
+          ss << "use of undeclared variable in expressin: " << *$1 << ".\n";
+          error( ss.str().c_str() ); 
+        }
     }
 |
     expression T_ADD expression

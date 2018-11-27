@@ -1,0 +1,22 @@
+program divisor
+  integer i;
+  integer divisor;
+  boolean divisorfound;
+begin
+  read( a );
+  divisorfound := false;
+  i := 2;
+  while not divisorfound and i < a do
+    if a mod i = 0 then
+      divisorfound := true;
+      divisor := i;
+    endif
+    i := i+1;
+  done
+  if divisorfound then
+    write( divisorfound );
+    write( divisor );
+  else
+    write( divisorfound );
+  endif
+end
