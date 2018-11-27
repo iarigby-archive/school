@@ -136,7 +136,14 @@ statement:
 assignment:
     T_ID T_ASSIGN expression T_SEMICOLON
     {
-        std::cout << "assignment -> T_ID T_ASSIGN expression T_SEMICOLON" << std::endl;
+        if (symbol_table.count(*$1) > 0 ) {
+          std::cout << "assignment -> T_ID T_ASSIGN expression T_SEMICOLON" << std::endl;
+        } else {
+          std::stringstream ss;
+          ss << "Use of undeclared variable: " << *$1 << ".\n";
+          error( ss.str().c_str() ); 
+        }
+        
     }
 ;
 
