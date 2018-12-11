@@ -1,0 +1,9 @@
+program abc
+    integer a;
+begin
+    a:=1;
+    repeat
+        a := a + 1;
+    until (a > 5) done
+    write(a);
+end
