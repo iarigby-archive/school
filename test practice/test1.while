@@ -1,0 +1,23 @@
+program FoO
+  integer a;
+  integer i;
+  integer dIvIsOr;
+  boolean dIvIsOrFoUnD;
+begin
+  read( a );
+  dIvIsOrFoUnD := false;
+  i := 0xff;
+  while not dIvIsOrFoUnD and i < a do
+    if a mod i = 0 then
+      dIvIsOrFoUnD := true;
+      dIvIsOr := i;
+    endif
+    i := i+1;
+  done
+  if dIvIsOrFoUnD then
+    write( dIvIsOrFoUnD );
+    write( dIvIsOr );
+  else
+    write( dIvIsOrFoUnD );
+  endif
+end
