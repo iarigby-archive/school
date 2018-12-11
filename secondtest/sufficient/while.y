@@ -32,6 +32,7 @@
 %token T_TRUE
 %token T_FALSE
 %token <name> T_ID
+%token T_INCR
 
 %left T_OR T_AND
 %left T_EQ
@@ -300,6 +301,11 @@ loop:
 ;
 
 expression:
+    T_ID T_INCR {
+        std::cout << "yay" << std::endl;
+        $$ = new expression_descriptor(integer, "");
+    }
+|
     T_NUM
     {
         $$ = new expression_descriptor(integer, "mov eax, " + *$1 + "\n");
