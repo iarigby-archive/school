@@ -1,0 +1,11 @@
+program p
+integer i;
+integer i;
+boolean b;
+begin
+read(i);
+i := (i > 0 ? 5 : 55);
+b := (i > 0 ? true : false);
+write(i);
+write(b);
+end
