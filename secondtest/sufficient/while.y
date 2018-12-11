@@ -302,7 +302,18 @@ loop:
 
 expression:
     T_ID T_INCR {
-        std::cout << "yay" << std::endl;
+         if( symbol_table.count(*$1) == 0 )
+        {
+            std::stringstream ss;
+            ss << "Undeclared variable in increment: " << *$1 << std::endl;
+            error( ss.str().c_str() );
+        }
+        if(symbol_table[*$1].decl_type != integer)
+        {
+           std::stringstream ss;
+           ss << d_loc__.first_line << ": Type error. increment is defined for integers" << std::endl;
+           error( ss.str().c_str() );
+        }
         $$ = new expression_descriptor(integer, "");
     }
 |
