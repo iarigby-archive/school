@@ -1,0 +1,5 @@
+# Simple program with little functionality
+program simple
+begin
+  write((a + b * (3 mod (c + 1)) div 2) - (1 - 0) > 9 and true or (false or 1 = 2));
+end
