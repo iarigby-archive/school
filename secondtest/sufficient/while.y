@@ -314,7 +314,10 @@ expression:
            ss << d_loc__.first_line << ": Type error. increment is defined for integers" << std::endl;
            error( ss.str().c_str() );
         }
-        $$ = new expression_descriptor(integer, "");
+        $$ = new expression_descriptor(integer,
+                "mov eax, [" + symbol_table[*$1].label + "]\n" 
+                "add eax, 1\n" +
+                "mov  [" + symbol_table[*$1].label + "], eax\n");
     }
 |
     T_NUM
