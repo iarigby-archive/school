@@ -2,3 +2,6 @@ lex.yy.cc
 while
 parse.cc
 Parserbase.h
+example.asm
+compiled_example
+example.o
