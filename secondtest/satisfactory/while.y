@@ -31,6 +31,7 @@
 %token <name>T_NUM
 %token T_TRUE
 %token T_FALSE
+%token T_CONST
 %token <name> T_ID
 
 %left T_OR T_AND
@@ -84,6 +85,32 @@ declarations:
 ;
 
 declaration:
+    T_CONST T_INTEGER T_ID T_SEMICOLON
+    {
+        if( symbol_table.count(*$3) > 0 )
+        {
+            std::stringstream ss;
+            ss << "Re-declared variable: " << *$3 << ".\n"
+            << "Line of previous declaration: " << symbol_table[*$3].decl_row << std::endl;
+            error( ss.str().c_str() );
+        }
+        symbol_table[*$3] = var_data( d_loc__.first_line, integer, new_label(), true );
+        delete $3;
+    }
+|
+    T_CONST T_BOOLEAN T_ID T_SEMICOLON
+    {
+        if( symbol_table.count(*$3) > 0 )
+        {
+            std::stringstream ss;
+            ss << "Re-declared variable: " << *$3 << ".\n"
+            << "Line of previous declaration: " << symbol_table[*$3].decl_row << std::endl;
+            error( ss.str().c_str() );
+        }
+        symbol_table[*$3] = var_data( d_loc__.first_line, boolean, new_label(), true );
+        delete $3;
+    }
+|
     T_INTEGER T_ID T_SEMICOLON
     {
         if( symbol_table.count(*$2) > 0 )
@@ -172,6 +199,11 @@ assignment:
            ss << d_loc__.first_line << ": Type error." << std::endl;
            error( ss.str().c_str() );
         }
+        if(!symbol_table[*$1].can_assign) {
+            std::stringstream ss;
+           ss << d_loc__.first_line << ": reassignment to const." << std::endl;
+           error( ss.str().c_str() );
+        }
         if($3->expr_type == integer)
             $$ = new std::string("" +
                     $3->expr_code +
@@ -180,6 +212,9 @@ assignment:
             $$ = new std::string("" +
                     $3->expr_code +
                     "mov [" + symbol_table[*$1].label + "], al\n");
+        if(symbol_table[*$1].is_const) {
+            symbol_table[*$1].can_assign = false;
+        }
         delete $1;
         delete $3;
     }

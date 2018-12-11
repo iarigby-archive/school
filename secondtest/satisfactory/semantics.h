@@ -21,12 +21,23 @@ struct var_data {
 	int decl_row;
 	type decl_type;
     std::string label;
+	bool is_const = false;
+	bool can_assign = true;
 	var_data(){}
 	var_data(int i, type t, std::string l)
 	{
 		decl_row = i;
 		decl_type = t;
         label = l;
+	}
+	var_data(int i, type t, std::string l, bool c)
+	{
+		decl_row = i;
+		decl_type = t;
+        label = l;
+		if (c) {
+			is_const = true;
+		}
 	}
 };
 

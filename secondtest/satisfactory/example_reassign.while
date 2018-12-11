@@ -1,0 +1,8 @@
+program test
+    integer i;
+    const integer k;
+begin
+    k := 2;
+    k := 2;
+    i := 3;
+end

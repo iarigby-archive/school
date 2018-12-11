@@ -27,6 +27,7 @@ do          return Parser::T_DO;
 done        return Parser::T_DONE;
 read        return Parser::T_READ;
 write       return Parser::T_WRITE;
+const   return Parser::T_CONST;
 ";"         return Parser::T_SEMICOLON;
 ":="        return Parser::T_ASSIGN;
 "="         return Parser::T_EQ;
