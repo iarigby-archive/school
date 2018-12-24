@@ -1,0 +1,5 @@
+./while $1 > example.asm
+nasm -felf example.asm
+gcc io.c example.o -m32 -o compiled_example
+./compiled_example
+

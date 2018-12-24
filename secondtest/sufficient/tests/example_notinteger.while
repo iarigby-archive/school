@@ -1,0 +1,9 @@
+program p
+    integer i;
+    boolean b;
+begin
+    i := 0; 
+    write(i++);
+    write(b++);
+    write(i++);
+end
