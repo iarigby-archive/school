@@ -1,0 +1,64 @@
+Most important topics for the ComNet exam:
+------------------------------------------
+1. Internet Architecture
+* Encapsulation
+* Layers in ISO OSI model
+* Layer descriptions from physical to Application layer
+
+2. Data Link Layer
+* Why do we need framing?
+* Byte Stuffing
+* Byte Counting
+* Bit Stuffing
+* Error detection with parity bits
+* Error control strategies (FEC, ARQ)
+* Hamming-distance
+* Error detection and Hamming distance (To detect d errors, you need a distance d+1 code...)
+* Error correction and Hamming distance
+* CRC
+* Simplex Stop-and-wait protocol
+* Alternate Bit Protocol
+* Sliding Window Protocol
+* What is Media Access?
+* Channel partitioning
+* CDMA
+* Pure ALOHA
+* Slotted ALOHA
+* CSMA: non-persistent CSMA, 1-pers. CSMA, p-pres. CSMA
+* CSMA/CD -  conditions for collision detections - packet size, cable length, etc.
+* Spanning Tree Protocol
+
+3. Network Layer
+* Classes of IP addresses
+* CIDR
+* IP Fragmentation
+* Dijkstra algorithm
+* Bellman-Ford algorithm
+* Distance Vector Routing
+* Link State routing
+* Path Vector Protocol
+
+4. Transport Layer
+* Properties of UDP
+* Properties of TCP
+* Three way handshake
+* Nagle's Algorithm
+* Karn's algorithm and the problem it solves
+* Slow start
+* AIMD
+* TCP Reno's Fast Retransmission
+* TCP CUBIC
+* TCP Compound
+
+5. Application Layer
+* Name resolution before DNS
+* Main features of DNS
+* Name hierarchy, zones and responsibilities
+* Authoritive DNS servers
+* Root DNS servers
+* Name resultion modes: recursive and iterative - examples on how they work
+* DNS propagation
+* DNS Resource records - few examples
+* HTTP - web objects, client-server arch.
+* Persistent vs non-persistent vs concurent HTTP
+* HTTP Cookies - how to store states
