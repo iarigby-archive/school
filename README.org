@@ -7,4 +7,5 @@ teacher files would probably need a separate subdirectory
 * decide
 - how to separate archived classes
 - maybe subdirectory for each semester would be nice, but some way to conveniently access current one (without symlinks because they confuse the shit out of ides). also that way all infos would be in one file
+- pdfs should be stored in cloud not in repos, need configuration for that
 * 
