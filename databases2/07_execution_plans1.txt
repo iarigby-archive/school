@@ -1,4 +1,3 @@
-
 SELECT * FROM emp; 
 SELECT ename FROM emp; (projekció)
 SELECT ename FROM emp WHERE ename='JONES';  -- (where)
@@ -12,7 +11,7 @@ SELECT STATEMENT
   HASH UNIQUE
     TABLE ACCESS FULL EMP
 
--- another plan (if we put ORDER BY by deptno)
+-- another plan (if we put ORDER BY by deptno into the SELECT statement)
 SELECT STATEMENT 
   SORT  UNIQUE   
     TABLE ACCESS  FULL  EMP

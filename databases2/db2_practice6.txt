@@ -1,3 +1,25 @@
+Size estimation
+---------------
+
+1. exercise  (06_UW_query_processing.ppt 48., 59. pages)
+-----------
+T(R) = 1000000, V(R,A) = 500, V(R,B) = 1000
+Give T(W) if W is the result of the following query:
+a) W <-- SELECT * FROM R WHERE A=x;
+b) W <-- SELECT * FROM R WHERE A=x AND B=y;
+c) W <-- SELECT * FROM R WHERE A=x OR B=y;
+
+
+2. exercise  (06_UW_query_processing.ppt 54-58. pages)
+-----------
+T(R) = 10000, T(S) = 4000, common column: A, in which the same values occur.
+V(R,A) = 500, V(S,A) = 500.
+Give T(W) if W is the result of the following query:
+a) W <-- SELECT * FROM R CROSS JOIN S;
+b) W <-- SELECT * FROM R NATURAL JOIN S;
+
+
+
 Oracle indices, Index Organized Tables, Partitions, Clusters
 ------------------------------------------------------------
 

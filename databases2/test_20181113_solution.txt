@@ -1,0 +1,81 @@
+Exercise 5
+----------
+Write a procedure which prints out (based on table NIKOVITS.PARENTOF) the name and city
+of people who have at least 3 ancestors with the same city as the person's city. (name, city)
+
+See the following query from db1_recursion.txt
+
+SELECT  name, SYS_CONNECT_BY_PATH(name,'.'), SYS_CONNECT_BY_PATH(city,'.')
+FROM nikovits.parentof
+START WITH  name='ADAM'
+CONNECT BY  PRIOR name = parent;
+
+The core of the solution:
+
+SELECT name, city FROM
+  (SELECT  name, city, SYS_CONNECT_BY_PATH(city,'.') cities
+   FROM nikovits.parentof
+   START WITH  name='ADAM'
+   CONNECT BY  PRIOR name = parent)
+WHERE instr(cities, city, 1,4) > 0
+
+NAME    CITY
+------------------
+MARCSA  Budapest
+
+
+Exercise 6
+----------
+Give the number of BITMAP indexes whose owner is 'NIKOVITS' and give the total occupied 
+bytes by these indexes. (number, total_size)
+
+SELECT  count(distinct index_name), sum(bytes) FROM dba_segments s, dba_indexes i 
+WHERE s.owner='NIKOVITS' AND i.owner=s.owner AND index_name=segment_name 
+AND segment_type like 'INDEX%' AND index_type='BITMAP';
+
+NUMBER  TOTAL_SIZE
+------------------
+3	393216
+
+
+Exercise 7
+----------
+Give the table names of owner NIKOVITS whose last column has data type DATE. (table_name)
+
+SELECT table_name 
+FROM dba_tab_columns c WHERE owner='NIKOVITS' AND data_type='DATE' AND column_id = 
+  (SELECT max(column_id) FROM dba_tab_columns WHERE owner='NIKOVITS' and c.table_name = table_name);
+
+
+TABLE_NAME
+------------
+CSATAK
+HALLG2018
+HALLGATOK
+SZALLIT
+SZALLIT_HCLT
+SZALLIT_PART
+
+
+Exercise 8
+----------
+Write a PL/SQL procedure which prints out the average blocking factor
+[(number of rows)/(number of non-empty blocks)] of table NIKOVITS.CUSTOMERS. (number)
+CREATE OR REPLACE PROCEDURE bl_factor IS
+
+set serveroutput on
+DECLARE               -- you can replace this line with CREATE ...
+ non_empty number(10); num_blocks number(10); num_rows number(10);
+BEGIN
+  SELECT count(DISTINCT substr(ROWID,1,15)) INTO non_empty FROM nikovits.customers;
+  SELECT blocks INTO num_blocks FROM dba_segments WHERE owner='NIKOVITS' 
+  AND segment_name='CUSTOMERS' AND segment_type='TABLE';
+  SELECT count(*) INTO num_rows FROM nikovits.customers; 
+  dbms_output.put_line(num_rows/non_empty);
+END;
+/
+
+NUMBER
+------
+38,19
+

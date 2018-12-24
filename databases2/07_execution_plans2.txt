@@ -26,21 +26,19 @@ PLAN_TABLE.position column shows the children                           / \
                                                                       1     2
 
 -- Cannot use index (because of '+1', which is an expression and not the column itself)
-select sum(suly) from nikovits.cikk where ckod+1=2;
 select sum(weight) from nikovits.product where prod_id+1=2;
 ---------------------------------------------------
-SELECT STATEMENT      
-  SORT  AGGREGATE    
-    TABLE ACCESS  FULL  CIKK  
+SELECT STATEMENT +  + 
+  SORT + AGGREGATE + 
+    TABLE ACCESS + FULL + NIKOVITS.PRODUCT
 
 -- uses index
-select sum(suly) from nikovits.cikk where ckod=floor(sqrt(44*23));
 select sum(weight) from nikovits.product where prod_id=floor(sqrt(44*23));
 ---------------------------------------------------------
-SELECT STATEMENT      
-  SORT  AGGREGATE    
-    TABLE ACCESS  BY INDEX ROWID  CIKK  
-      INDEX  UNIQUE SCAN  C_CKOD  
+SELECT STATEMENT +  + 
+  SORT + AGGREGATE + 
+    TABLE ACCESS + BY INDEX ROWID + NIKOVITS.PRODUCT
+      INDEX + UNIQUE SCAN + NIKOVITS.PROD_ID_IDX
 
 
 -- Index usage depends on selection cardinality
@@ -48,18 +46,17 @@ SELECT STATEMENT
 select sum(suly) from nikovits.cikk where ckod < 300;
 select sum(weight) from nikovits.product where prod_id < 300;
 --------------------------------------------
-SELECT STATEMENT      
-  SORT  AGGREGATE    
-    TABLE ACCESS  FULL  CIKK  
+SELECT STATEMENT +  +     
+  SORT + AGGREGATE +      
+    TABLE ACCESS + FULL + NIKOVITS.PRODUCT  
 
 -- uses index
-select sum(suly) from nikovits.cikk where ckod < 10;
 select sum(weight) from nikovits.product where prod_id < 10;
 -------------------------------------------
-SELECT STATEMENT      
-  SORT  AGGREGATE    
-    TABLE ACCESS  BY INDEX ROWID  CIKK  
-      INDEX  RANGE SCAN  C_CKOD  
+SELECT STATEMENT +  + 
+  SORT + AGGREGATE + 
+    TABLE ACCESS + BY INDEX ROWID BATCHED + NIKOVITS.PRODUCT
+      INDEX + RANGE SCAN + NIKOVITS.PROD_ID_IDX
 
 
 SELECT szallito.szkod, projekt.pkod, telephely

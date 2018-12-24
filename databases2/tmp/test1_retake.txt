@@ -1,0 +1,47 @@
+Test 1 retake information
+-------------------------
+
+For those who have to retake the paper exercises too it is compulsory to solve
+and hand in the exercises of test 1. I will give you a paper copy of it.
+
+For those who have to retake the computer exercises (SQL, PL/SQL) it is compulsory 
+to complete all the exercises below, check them and send the queries/programs
+and the results to me by email. (My email is: nikovits@inf.elte.hu)
+The deadline is december 10th 2018.
+
+Exercise 1
+----------
+Write a procedure which prints out (based on table NIKOVITS.PARENTOF) the name,
+money and average money of the descendants for whom it is true, that the average money
+of the descendants is greater than the person's money.
+The program should print out 3 pieces of data for every row: Name, Money, Avg_Money_of_Descendants 
+CREATE OR REPLACE PROCEDURE rich_avg_descendant IS
+...
+Test: 
+set serveroutput on
+execute rich_avg_descendant();
+
+
+Exercise 2
+----------
+Write a PL/SQL procedure which counts and prints the number of empty blocks of a table.
+CREATE OR REPLACE PROCEDURE empty_blocks(p_owner VARCHAR2, p_table VARCHAR2) IS
+...
+Test:
+-----
+set serveroutput on
+execute empty_blocks('nikovits', 'employees');
+
+
+Exercise 3
+----------
+Write a PL/SQL procedure which prints out the names and sizes (in bytes) of indexes created
+on the parameter table.
+CREATE OR REPLACE PROCEDURE list_indexes(p_owner VARCHAR2, p_table VARCHAR2) IS
+...
+Test:
+-----
+set serveroutput on
+execute list_indexes('nikovits', 'emp');
+
+

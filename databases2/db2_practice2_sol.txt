@@ -128,7 +128,7 @@ the size of the table in bytes (the size of the table's segment) and the creatio
 CREATE OR REPLACE PROCEDURE oldest_table(p_user VARCHAR2) IS 
 ...
 SET SERVEROUTPUT ON
-EXECUTE oldest_table('ORAUSER');
+EXECUTE oldest_table('NIKOVITS');
 
 Hint:
 Find the creation date of the object (table) in DBA_OBJECTS, then find the segment(s) of the table

@@ -84,7 +84,39 @@ execution plans and hints (07_tuning.ppt)
 07_execution_plans3.txt, 07_execution_plans4.txt, 07_hints.txt)
 
 Practice:
-1st Test -> november 12th
+1st Test -> November 13th
 
+8th lecture
+-----------
+Consistency, failures, logging, recovery
+(08_UW_Crash_recovery.ppt)
 
+Practice:        Information about the 1st test and retake -> see test1_retake.txt
+execution plans and hints
+(07_expl.txt, 07_execution_plans1.txt, 07_execution_plans2.txt, 
+07_execution_plans3.txt, 07_execution_plans4.txt, 07_hints.txt)
+db2_practice7.txt
 
+9th lecture
+-----------
+Concurrency control; schedule, serializable, conflict-serializable, precedence graph
+(10_UW_Concurrency.ppt pages 1-40)
+
+Practice:
+db2_practice8.txt
+
+10th lecture
+-----------
+Concurrency control (cont.)
+(10_UW_Concurrency.ppt pages 41-88)
+
+Practice:
+db2_practice9.txt, db2_practice7b.txt
+
+11th lecture
+-----------
+Summary, help for the exam
+(Exam_questions.docx)
+
+Practice:
+2nd test -> December 11th

@@ -1,3 +1,28 @@
+Size estimation
+---------------
+
+1. exercise  (06_UW_query_processing.ppt 48., 59. pages)
+-----------
+T(R) = 1000000, V(R,A) = 500, V(R,B) = 1000
+Give T(W) if W is the result of the following query:
+a) W <-- SELECT * FROM R WHERE A=x;           -> T(R)/V(R,A)
+b) W <-- SELECT * FROM R WHERE A=x AND B=y;   -> T(R)*(1/V(R,A))*(1/V(R,B))
+c) W <-- SELECT * FROM R WHERE A=x OR B=y;    -> T(R)*(1-[1-1/V(R,A)]*[1-1/V(R,B)])
+
+We do some transformation:  V(R,A) -> v1, V(R,B) -> v2 
+T*[1-(1-1/v1)*(1-1/v2)] = T*[(v1*v2)/(v1*v2) - (v1-1)*(v2-1)/(v1*v2)] =
+= T*[(v1 + v2 -1)/(v1*v2)] = T/v2 + T/v1 - T/(v1*v2)
+
+2. exercise  (06_UW_query_processing.ppt 54-58. pages)
+-----------
+T(R) = 10000, T(S) = 4000, common column: A, in which the same values occur.
+V(R,A) = 500, V(S,A) = 500.
+Give T(W) if W is the result of the following query:
+a) W <-- SELECT * FROM R CROSS JOIN S;     -> T(R)*T(S)
+b) W <-- SELECT * FROM R NATURAL JOIN S;   -> T(R)*T(S)/V(R,A)
+
+
+
 Oracle indices, Index Organized Tables, Partitions, Clusters
 ------------------------------------------------------------
 

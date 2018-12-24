@@ -1,0 +1,48 @@
+Execution plans, hints
+----------------------
+
+The owner of the following tables is NIKOVITS.
+
+PRODUCT(prod_id, name, color, weight)
+SUPPLIER(supl_id, name, status, address)
+PROJECT(proj_id, name, address)
+SUPPLY(supl_id, prod_id, proj_id, amount, sDate)
+
+------------------------------------------------------------------------------------------
+We have products, projects and the suppliers transport different products to the projects.
+You can see in table SUPPLY the supplier (supl_id), the product (prod_id), the project (proj_id),
+the date of the transport and the amount of the products transported on the specific date.
+------------------------------------------------------------------------------------------
+
+-- The tables were created with the following statements:
+CREATE TABLE product(prod_id, name, color, weight) AS SELECT * FROM nikovits.cikk;
+CREATE TABLE supplier(supl_id, name, status, address) AS SELECT * FROM nikovits.szallito;
+CREATE TABLE project(proj_id, name, address) AS SELECT * FROM nikovits.projekt;
+CREATE TABLE supply(supl_id, prod_id, proj_id, amount, sDate) AS SELECT * FROM nikovits.szallit;
+GRANT select on product to public;
+GRANT select on supplier to public;
+GRANT select on project to public;
+GRANT select on supply to public;
+
+-- The tables have indexes too.
+CREATE INDEX prod_color_idx ON product(color);
+CREATE UNIQUE INDEX prod_id_idx ON product(prod_id);
+CREATE UNIQUE INDEX proj_id_idx ON PROJECT(proj_id);
+CREATE UNIQUE INDEX supplier_id_idx ON supplier(supl_id);
+CREATE INDEX supply_supplier_idx ON supply(supl_id);
+CREATE INDEX supply_proj_idx ON supply(proj_id);
+CREATE INDEX supply_prod_idx ON supply(prod_id);
+
+-- Query
+Give the sum amount of products where the color = 'piros' (piros in Hungarian means red in English). 
+
+Give hints in order to use the following execution plans:
+
+a) no index at all
+b) one index
+c) index for both tables
+d) SORT-MERGE join
+e) NESTED-LOOPS join
+f) NESTED-LOOPS join and no index
+
+
