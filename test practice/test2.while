@@ -1,0 +1,14 @@
+program t
+integer i;
+boolean b;
+begin
+read(i);
+repeat
+i := i - 1;
+until
+i = 0
+done
+b := (i = 0);
+write(i);
+write(b);
+end

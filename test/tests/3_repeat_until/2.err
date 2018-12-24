@@ -1,0 +1,10 @@
+program _prog1
+  integer _id1;
+begin
+  _id1 := 10;
+  repeat
+  until
+    _id1 = 0
+  done
+  write(_id1);
+end

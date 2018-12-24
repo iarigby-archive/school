@@ -1,0 +1,8 @@
+program p
+    integer i;
+begin
+    i := 0; 
+    write(i++);
+    write(i++);
+    write(i++);
+end

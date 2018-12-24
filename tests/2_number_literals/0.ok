@@ -1,0 +1,11 @@
+program p
+    integer i;
+begin
+    i := 0o000;
+    i := 0o123;
+    i := 0o01234567;
+    i := 0o14523436;
+    i := 0xabc;
+    i := 0x0123456789abcdef;
+    i := 0x6743164bcffadeec;
+end

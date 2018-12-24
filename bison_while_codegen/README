@@ -1,0 +1,9 @@
+./while example.while > example.asm
+nasm -felf example.asm
+<<<<<<< HEAD
+gcc io.c example.o -m32 -oexample
+=======
+gcc io.c example.o -m32 -o example
+>>>>>>> c01a3ff9ce84c4ba21784fac81afe39dd342e223
+./example
+

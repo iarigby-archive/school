@@ -1,0 +1,5 @@
+# Simple program with little functionality
+program simple
+begin
+  write(5 - (2 + 2 * 3) div 4 > 1 and true or not false);
+end
