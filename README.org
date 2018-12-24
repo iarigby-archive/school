@@ -1,1 +1,10 @@
-hi
+* contents
+each subdirectory is a subject 
+
+* subject setup
+have course info, including homepage for wget script (have it in org doc and extract info automatically)
+teacher files would probably need a separate subdirectory
+* decide
+- how to separate archived classes
+- maybe subdirectory for each semester would be nice, but some way to conveniently access current one (without symlinks because they confuse the shit out of ides). also that way all infos would be in one file
+* 
