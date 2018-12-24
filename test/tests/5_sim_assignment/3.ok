@@ -1,0 +1,8 @@
+program _prog1
+    integer _id1;
+    integer _id2;
+begin
+	_id1 := 4+5;
+    _id1, _id2 := 3, 4+5;
+    _id1, _id2, _id3 := 3, 4+5, 4+8;
+end

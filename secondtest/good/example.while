@@ -1,0 +1,14 @@
+program p
+    integer i;
+    integer j;
+begin
+    read(i);
+    if i > 3 then
+        restart;
+    endif
+    read(j);
+    if j > 4 then
+        restart;
+    endif
+    write(i+j);
+end

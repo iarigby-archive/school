@@ -1,0 +1,5 @@
+program _prog1
+    integer _1;
+begin
+    skip;
+end

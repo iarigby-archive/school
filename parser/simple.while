@@ -1,0 +1,8 @@
+# Simple program with little functionality
+program simple
+  integer a;
+begin
+  a := 0;
+  a := (a + 1);
+  write(a);
+end

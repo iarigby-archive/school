@@ -1,0 +1,5 @@
+program p
+    integer i;
+begin
+    i := 0o8;
+end

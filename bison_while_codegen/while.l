@@ -27,6 +27,11 @@ do          return Parser::T_DO;
 done        return Parser::T_DONE;
 read        return Parser::T_READ;
 write       return Parser::T_WRITE;
+<<<<<<< HEAD
+=======
+repeat       return Parser::T_REPEAT;
+until       return Parser::T_UNTIL;
+>>>>>>> c01a3ff9ce84c4ba21784fac81afe39dd342e223
 ";"         return Parser::T_SEMICOLON;
 ":="        return Parser::T_ASSIGN;
 "="         return Parser::T_EQ;

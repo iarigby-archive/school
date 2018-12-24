@@ -2,6 +2,21 @@
 
 %lsp-needed
 
+<<<<<<< HEAD
+=======
+
+
+%union
+{
+  std::string *name;
+  std::string *code;
+  expression_descriptor *expr_desc;
+}
+
+%type <expr_desc> expression
+%type <code> statement statements assignment read write branch loop
+
+>>>>>>> c01a3ff9ce84c4ba21784fac81afe39dd342e223
 %token T_PROGRAM
 %token T_BEGIN
 %token T_END
@@ -25,6 +40,11 @@
 %token T_TRUE
 %token T_FALSE
 %token <name> T_ID
+<<<<<<< HEAD
+=======
+%token T_REPEAT
+%token T_UNTIL
+>>>>>>> c01a3ff9ce84c4ba21784fac81afe39dd342e223
 
 %left T_OR T_AND
 %left T_EQ
@@ -35,6 +55,7 @@
 
 %start program
 
+<<<<<<< HEAD
 %union
 {
   std::string *name;
@@ -44,6 +65,11 @@
 
 %type <expr_desc> expression
 %type <code> statement statements assignment read write branch loop
+=======
+
+
+
+>>>>>>> c01a3ff9ce84c4ba21784fac81afe39dd342e223
 
 %%
 
@@ -295,6 +321,29 @@ loop:
         delete $2;
         delete $4;
     }
+<<<<<<< HEAD
+=======
+|
+     T_REPEAT statements T_UNTIL expression T_DONE
+    {
+        if($4->expr_type != boolean)
+        {
+           std::stringstream ss;
+           ss << d_loc__.first_line << ": Type error." << std::endl;
+           error( ss.str().c_str() );
+        }
+        std::string start = new_label();
+        std::string end = new_label();
+        $$ = new std::string("" +
+                start + ":\n" +
+                *$2 +
+                $4->expr_code +
+                "cmp al, 1\n" +
+                "jne near " +start + "\n");
+        delete $2;
+        delete $4;
+    }
+>>>>>>> c01a3ff9ce84c4ba21784fac81afe39dd342e223
 ;
 
 expression:

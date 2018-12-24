@@ -1,0 +1,3 @@
+nasm -felf example.asm 
+gcc io.c example.o -m32 -o example 
+./example

@@ -1,0 +1,6 @@
+program _prog1
+    integer _id1;
+    integer _id2;
+begin
+    _id1, _id2 := 3;
+end
